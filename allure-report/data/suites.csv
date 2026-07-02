@@ -1,0 +1,4 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","9571","Verifing login page arora@gmail.com and arora@12354","chromium","2026-06-15","passed","2026-06-15","login page check","login-data-driven-json.spec.ts","",""
+"","12675","Verifing login page and","chromium","2026-06-15","passed","2026-06-15","login page check","login-data-driven-json.spec.ts","",""
+"","21988","Verifing login page arora@gmail.com and arora@123","chromium","2026-06-15","passed","2026-06-15","login page check","login-data-driven-json.spec.ts","",""

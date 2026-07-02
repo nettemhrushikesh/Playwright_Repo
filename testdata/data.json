@@ -1,0 +1,18 @@
+[
+    {
+    "email":"arora@gmail.com",
+    "password":"arora@123",
+    "validity":"valid"
+},
+{
+    "email":"arora@gmail.com",
+    "password":"arora@12354",
+    "validity":"invalid"
+},
+{
+    "email":"",
+    "password":"",
+    "validity":"invalid"
+}
+
+]
