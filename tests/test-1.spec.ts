@@ -13,6 +13,9 @@ test('test', async ({ page }) => {
   let Allproducts:string[] = await products.allTextContents();
   for (const element of Allproducts)
      {
+
+
+      
     console.log(element)
     
   }
