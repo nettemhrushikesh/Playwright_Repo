@@ -13,9 +13,7 @@ test('test', async ({ page }) => {
   let Allproducts:string[] = await products.allTextContents();
   for (const element of Allproducts)
      {
-
-
-      
+          // Practicing the branching v-1 jefofeopfeopfejfeo
     console.log(element)
     
   }
