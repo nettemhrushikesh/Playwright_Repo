@@ -7,12 +7,19 @@ import { test, expect } from "@playwright/test";
 //const record = parse(filecontent,{colums:true,skip-empty-lines:true})
 
 import fs from 'fs';
-const jsonPath = "testdata/data.json";
-const logindata:any = JSON.parse(fs.readFileSync(jsonPath,"utf-8"));
+import path from 'path';
+
+const jsonPath = path.join(process.cwd(), 'testdata', 'data.json');
+let logindata: any = [];
+try {
+   logindata = JSON.parse(fs.readFileSync(jsonPath, 'utf-8')) || [];
+} catch (e) {
+   console.error(`Failed to read or parse ${jsonPath}:`, e);
+}
    
 
 
-   test.describe(`login page check`, async() => {
+      test.describe(`login page check`, () => {
          for (const {email,password,validity} of logindata) {
 
       test(`Verifing login page ${email} and ${password}`, async ({ page }) => {
