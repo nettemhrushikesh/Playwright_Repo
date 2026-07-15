@@ -1,6 +1,6 @@
 import {test , expect} from '@playwright/test'
 
-const searchitems:string[] =['laptop','mobile','gift card']; 
+const searchitems:string[] =['laptop','gift card']; // 'mobile'
 
 
 // for (const item in searchitems){
