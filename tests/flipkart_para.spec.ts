@@ -8,7 +8,7 @@ const mobilephonedata :string[][] = [['div:nth-child(6) > div > .yiQOTv > .asbjx
 const basic_info :string[] = ['.css-g5y9jx > div:nth-child(2) > ._1psv1zeb9 > div > div > div:nth-child(2)',
                                   '._1psv1zeb9._1psv1ze0._7dzyg20._1psv1ze9l > div']
 
-                                  
+
     test.describe("validating data",() => {
       test.setTimeout(30000);
 

@@ -40,9 +40,7 @@ for (const [email, password, validity] of logindata) {
 
    });
 
-
 }
-
 
 
 // await expect(page.getByRole('link', { name: 'Log out' })).toBeVisible();
