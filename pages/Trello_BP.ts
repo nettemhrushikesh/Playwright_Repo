@@ -25,6 +25,21 @@ export class BasePage {
     async Navigation(url: string){
         await this.page.goto(url)
     }
+        async getPageTitle() {
+        return await this.page.title();
+    }
+
+    async reloadPage() {
+        await this.page.reload();
+    }
+
+    async goBack() {
+        await this.page.goBack();
+    }
+
+    async goForward() {
+        await this.page.goForward();
+    }
     async VerifyURL(){
         await expect(this.page).toHaveURL("https://trello.com/")
     }
