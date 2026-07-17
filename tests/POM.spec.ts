@@ -2,6 +2,7 @@ import { test, expect } from '@playwright/test';
 import { LoginPage } from '../pages/Loginpage';
 import { ProductsPage } from '../pages/Productpage';
 import { credentials } from '../testdata/Credentials';
+import { generateSecret, generate, verify } from 'otplib';
 
 test('Verify Products Page and Logout', async ({ page, context }) => {
 
