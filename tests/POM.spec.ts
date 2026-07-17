@@ -1,17 +1,17 @@
 import { test, expect } from '@playwright/test';
 import { LoginPage } from '../pages/Loginpage';
 import { ProductsPage } from '../pages/Productpage';
-import { credentials } from '../testdata/Credentials';
-import { generateSecret, generate, verify } from 'otplib';
+import {username, password , sauceurl} from '../testdata/Credentials';
+import { authenticator } from 'otplib';
 
 test('Verify Products Page and Logout', async ({ page, context }) => {
 
   const loginPage = new LoginPage(page);
   const productsPage = new ProductsPage(page);
   
-  await loginPage.openApplication();
+  await loginPage.navigate(sauceurl ?? '');
   await loginPage.verifyLoginPageElements();
-  await loginPage.login(credentials.username, credentials.password);
+  await loginPage.login(username ?? '', password ?? '');
   await productsPage.verifyProductPage();
   await expect(productsPage.productsTitle).toBeVisible();
   await expect(productsPage.appLogo).toBeVisible();

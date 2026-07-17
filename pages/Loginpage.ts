@@ -1,5 +1,6 @@
 import { Page, Locator, expect } from '@playwright/test';
 import { BasePage } from './Basepage';
+import { sauceurl } from '../testdata/Credentials';
 
 export class LoginPage extends BasePage {
 
@@ -21,9 +22,9 @@ export class LoginPage extends BasePage {
     this.passwordCredentials = page.locator('.login_password');
   }
 
-  async openApplication(): Promise<void> {
-    await this.page.goto('https://www.saucedemo.com/');
-  }
+  // async openApplication(): Promise<void> {
+  //   await this.page.goto(sauceurl ?? '');
+  // }
 
   async verifyLoginPageElements(): Promise<void> {
     await expect(this.page).toHaveURL('https://www.saucedemo.com/');
@@ -57,7 +58,7 @@ export class LoginPage extends BasePage {
   }
 
   async verifyUserIsOnLoginPage(): Promise<void> {
-    await expect(this.page).toHaveURL('https://www.saucedemo.com/');
+    await expect(this.page).toHaveURL(sauceurl ?? '');
     await expect(this.loginButton).toBeVisible();
   }
 }

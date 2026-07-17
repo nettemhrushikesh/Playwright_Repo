@@ -33,9 +33,7 @@ for (const [mobilename, features, color] of mobilephonedata){
               await expect(page.getByText('All details')).toBeVisible()
               await expect(page.getByText('Ratings and reviews')).toBeVisible()
               await expect(page.getByText('Questions and Answers', { exact: true })).toBeVisible()
-              // await expect()
-              // await expect()
-
+            
 
 })
 }
