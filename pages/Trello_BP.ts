@@ -75,8 +75,8 @@ export class BasePage {
 
 
     }
-    async Navigation(){
-        await this.page.goto("https://trello.com/")
+    async Navigation(url:string ){
+        await this.page.goto(url)
     }
     async ClickLogin(){
         await this.LoginButton.click();
@@ -149,6 +149,3 @@ export class BasePage {
     }
     
 }
-
-
-

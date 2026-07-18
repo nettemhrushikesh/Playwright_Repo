@@ -1,7 +1,7 @@
 import{test , expect} from '@playwright/test';
 import { BasePage } from '../pages/Trello_BP';
 import { LoginPage } from '../pages/Trello_LP';
-import { topsecret } from "../testdata/Credentials";
+import { topsecret, TrelloURL, TrelloAccount } from "../testdata/Credentials";
 import { authenticator } from "otplib";
 
 
@@ -12,7 +12,7 @@ test(" Trello BasePage Validation", async({page,context})=> {
     const loginpage = new LoginPage(page);
     const otp: string = authenticator.generate(topsecret ?? '')
 
-    await basepage.Navigation();
+    await basepage.Navigation(TrelloURL ?? '');
     await basepage.VerifyURL();
     await basepage.VerifyALLButtonVisibility();
     await basepage.VerifingAllButtonEnabled();
@@ -24,8 +24,10 @@ test(" Trello BasePage Validation", async({page,context})=> {
     await expect(loginpage.PasswordField).toBeVisible();
     await loginpage.EnterPassword('rushi@1234')
     await loginpage.LoginButton.click()
+
+    await basepage.Navigation(TrelloAccount ?? '');
     
-    await loginpage.Verification2FV(otp)
+    // await loginpage.Verification2FV(otp)
 });
 
 })

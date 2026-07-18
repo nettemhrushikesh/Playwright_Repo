@@ -2,9 +2,6 @@ import { Expect , Page, Locator } from "@playwright/test";
 import { BasePage } from "./Basepage";
 
 
-
-
-
 export class LoginPage extends BasePage {
     
   readonly Trellologo: Locator;
