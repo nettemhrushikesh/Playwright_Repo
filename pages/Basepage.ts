@@ -17,7 +17,7 @@ export class BasePage {
   }
 
   async getPageTitle() {
-    return await this.page.title();
+    return this.page.title();
   }
 
   async reloadPage() {

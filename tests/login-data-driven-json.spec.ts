@@ -1,5 +1,5 @@
 import { test, expect } from "@playwright/test";
-//npm install csv-parse
+//npm install csv-parse    //command
 // import fs from 'fs'   // for csv-file//
 // import { parse } from "csv-parse/sync";
 // const csvpath = 'path.csv';
