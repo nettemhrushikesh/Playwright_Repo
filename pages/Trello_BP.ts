@@ -1,4 +1,6 @@
 import { expect, Locator, Page } from "@playwright/test";
+import { TrelloURL } from "../testdata/Credentials";
+
 export class BasePage {
     protected page : Page
 
@@ -97,7 +99,7 @@ export class BasePage {
         await this.page.goForward();
     }
     async VerifyURL(){
-        await expect(this.page).toHaveURL("https://trello.com/")
+        await expect(this.page).toHaveURL(TrelloURL ?? '')
     }
     async VerifyLogo(){
         await expect(this.Logo).toBeVisible();
