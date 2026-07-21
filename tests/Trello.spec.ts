@@ -9,7 +9,7 @@ import { authenticator } from "otplib";
 test.describe("Trello BasePage Test", ()=> {
     
 test(" Trello BasePage Validation", async({page,context})=> {
-    const basepage = new BasePage(page);
+    const basepage = new BasePage(page,context);
     const loginpage = new LoginPage(page);
     const mainpage = new MainPage(page);
 
@@ -40,6 +40,10 @@ test(" Trello BasePage Validation", async({page,context})=> {
     await mainpage.ClickContinueButton();
     
     await mainpage.DeleteworkSpace()
+    await basepage.goBack()
+    await basepage.goBack()
+    await basepage.goBack()
+    await basepage.goBack()
 });
 
 })
