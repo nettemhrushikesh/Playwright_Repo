@@ -1,8 +1,10 @@
-import { expect, Locator, Page } from "@playwright/test";
+import { expect, Locator, Page , BrowserContext} from "@playwright/test";
 import { TrelloURL } from "../testdata/Credentials";
+import { promises } from "node:dns";
 
 export class BasePage {
-    protected page : Page
+    protected page : Page;
+    protected Context : BrowserContext;
 
     readonly Logo : Locator;
     readonly LoginButton : Locator;
@@ -36,8 +38,10 @@ export class BasePage {
     readonly Youtube: Locator;
 
 
-    constructor(page : Page){
+    constructor(page : Page , Context : BrowserContext){
         this.page = page;
+        this.Context = Context;
+
         this.Logo = page.getByRole('link', { name: 'Atlassian Trello' });
         this.LoginButton = page.getByRole('link', { name: 'Log in', exact: true });
         this.Get_TrelloButton = page.getByRole('link', { name: 'Get Trello for free' });
@@ -79,6 +83,19 @@ export class BasePage {
     }
     async Navigation(url:string ){
         await this.page.goto(url)
+    }
+
+    async OpenPrivacyPolicy(){
+        const [newPage] = await Promise.all([
+            this.Context.waitForEvent('page'),
+            this.page.getByRole('link', { name: 'Atlassian Privacy Policy' }).first().click()
+        ])
+    await newPage.waitForLoadState()
+    return newPage
+    }
+
+    async CloseTab(newPage : Page){
+        await newPage.close()
     }
     async ClickLogin(){
         await this.LoginButton.click();
