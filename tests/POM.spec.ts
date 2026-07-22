@@ -2,7 +2,6 @@ import { test, expect } from '@playwright/test';
 import { LoginPage } from '../pages/Loginpage';
 import { ProductsPage } from '../pages/Productpage';
 import {username, password , sauceurl} from '../testdata/Credentials';
-import { authenticator } from 'otplib';
 
 test('Verify Products Page and Logout', async ({ page, context }) => {
 

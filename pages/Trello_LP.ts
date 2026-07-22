@@ -1,8 +1,6 @@
 import { Expect , Page, Locator } from "@playwright/test";
 import { BasePage } from "./Basepage";
-
-
-
+import { authenticator } from "otplib";
 
 
 export class LoginPage extends BasePage {
@@ -40,5 +38,6 @@ export class LoginPage extends BasePage {
     async Verification2FV(otp: string){
         await this.OTPField.fill(otp)
         await this.LoginBtn.click()
+        
     }
 }
