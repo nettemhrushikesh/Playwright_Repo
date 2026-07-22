@@ -10,29 +10,35 @@ test("Actionability Check on the BasePage Links",async({page , context})=> {
 
     // working links
 
-    // await basepage.Logo.click();
-    // await basepage.goBack()
-    // await basepage.LoginButton.click()
-    // await basepage.goBack()
-    // await basepage.Get_TrelloButton.click()
-    // await basepage.goBack()
-    // await basepage.FeaturesButton.click()
-    // await basepage.goBack()
+    await basepage.Logo.click();
+    await basepage.goBack()
+    await basepage.LoginButton.click()
+    await basepage.goBack()
+    await basepage.Get_TrelloButton.click()
+    await basepage.goBack()
+    await basepage.FeaturesButton.click()
+    await basepage.goBack()
+    await basepage.goForward()
 
     // not working links
 
-    // await basepage.SolutionsButton.click()
-    // await basepage.goBack()
-    // await basepage.PlansButton.click()
-    // await basepage.goBack()
-    // await basepage.PricingButton.click()
-    // await basepage.goBack()
-    // await basepage.Resources.click()
-    // await basepage.goBack()
-    // await basepage.Email_SignupBar.click()
-    // await basepage.goBack()
-    // await basepage.SignupForTrello.click()
-    // await basepage.goBack()
+    await basepage.SolutionsButton.click()
+    await basepage.goBack()
+    await basepage.goForward()
+    await basepage.PlansButton.click()
+    await basepage.goBack()
+    await basepage.goForward()
+    await basepage.PricingButton.click()
+    await basepage.goBack()
+    await basepage.Resources.click()
+    await basepage.goBack()
+    await basepage.goForward()
+    await basepage.Email_SignupBar.click()
+    await basepage.goBack()
+    await basepage.goForward()
+    await basepage.SignupForTrello.click()
+    await basepage.goBack()
+    await basepage.goForward()
 
     // working links 
    const newPage =  await basepage.OpenPrivacyPolicy()
@@ -49,7 +55,7 @@ test("Actionability Check on the BasePage Links",async({page , context})=> {
     await basepage.goBack()
     await basepage.Card_mirroring.click()
     await basepage.goBack()
-    await page.waitForTimeout(3000)
+    await basepage.goForward()
 
     
     await basepage.Browse_Integrations.click()
@@ -63,15 +69,34 @@ test("Actionability Check on the BasePage Links",async({page , context})=> {
     await basepage.goBack()
     await basepage.Contact_Us.click()
     await basepage.goBack()
-    await basepage.Instagram.click()
-    await basepage.goBack()
-    await basepage.Facebook.click()
-    await basepage.goBack()
-    await basepage.Twitter.click()
-    await basepage.goBack()
-    await basepage.Linkedin.click()
-    await basepage.goBack()
-    await basepage.Youtube.click()
-    await basepage.goBack()
+
+   const Instagram =  await basepage.PopUpFunction(
+    page.getByRole('link', { name: 'Instagram' })
+   )
+   await basepage.CloseTab(Instagram);
+    
+   const Facebook =  await basepage.PopUpFunction(
+   page.getByRole('link', { name: 'Facebook' })
+   )
+   await basepage.CloseTab(Facebook);
+
+     
+   const Twitter =  await basepage.PopUpFunction(
+   page.getByRole('link', { name: 'Twitter' })
+   )
+   await basepage.CloseTab(Twitter);
+
+     
+   const LinkedIn =  await basepage.PopUpFunction(
+   page.getByRole('link', { name: 'LinkedIn' })
+   )
+   await basepage.CloseTab(LinkedIn);
+
+      
+   const Youtube =  await basepage.PopUpFunction(
+   page.getByRole('link', { name: 'Youtube' })
+   )
+   await basepage.CloseTab(Youtube);
+
     
 })

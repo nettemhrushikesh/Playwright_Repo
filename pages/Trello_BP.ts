@@ -92,11 +92,22 @@ export class BasePage {
         ])
     await newPage.waitForLoadState()
     return newPage
+    };
+
+    async PopUpFunction(link:Locator) {
+        const[newPage] = await Promise.all([
+            this.Context.waitForEvent('page'),
+            link.click()
+        ])
+    await newPage.waitForLoadState()
+    return newPage
+    };
+
+
+    async CloseTab(page : Page){
+        await page.close()
     }
 
-    async CloseTab(newPage : Page){
-        await newPage.close()
-    }
     async ClickLogin(){
         await this.LoginButton.click();
     }
