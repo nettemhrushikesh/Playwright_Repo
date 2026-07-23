@@ -22,8 +22,10 @@ export class MainPage extends BasePage {
     readonly CreateBoard : Locator;
     readonly BoardtitleField : Locator;
     readonly CreateBoardSubmitButton : Locator;
+    readonly CreateListName : Locator;
+    readonly PlannerButton : Locator;
     readonly BackToHome : Locator;
-    readonly TeamTab : Locator;
+    readonly Home_Team_SettingsButton  : Locator;
 
 
     constructor(page:Page, Context:BrowserContext) {
@@ -42,14 +44,17 @@ export class MainPage extends BasePage {
     this.WorkspaceDescriptionField = page.getByRole('textbox', { name: 'Workspace description Optional' })
     this.WorkspaceTypeFieldListBox =  page.getByTestId('header-create-team-type-input-select--listbox')
     this.ContinueButton = page.getByTestId('header-create-team-submit-button')
+    this.Home_Team_SettingsButton = page.getByTestId('home-team-settings-tab')
     this.SettingsButton = page.getByTestId('open-settings-link')
 
     this.NewBoard = page.getByTestId('create-board-tile')
-    this.CreateBoard = this.NewBoard.getByRole('button',{name : 'Create board'})
+    this.CreateBoard = page.getByTestId('create-board-button')
     this.BoardtitleField = page.getByTestId('create-board-title-input')
     this.CreateBoardSubmitButton = page.getByTestId('create-board-submit-button')
+    this.CreateListName =  page.getByTestId('list-name-textarea')
+    this.PlannerButton = page.getByTestId('panel-nav-planner-button')
     this.BackToHome = page.getByRole('link', { name: 'Back to home' })
-    this.TeamTab =  page.getByTestId('home-team-tab-section-6a622d391c203b6381e53f68').getByRole('link', { name: 'S Sataru Gojo' })
+   
 
     this.DeleteButton = page.getByTestId('delete-workspace-button')
     this.DeleteConfirmField = page.getByTestId('delete-workspace-confirm-field')
@@ -76,10 +81,12 @@ export class MainPage extends BasePage {
     async CreateNewBoard(){
         await this.NewBoard.first().click()
         await this.CreateBoard.click()
-        await this.BoardtitleField.fill('Jerry')
+        await this.BoardtitleField.fill(workspace)
         await this.CreateBoardSubmitButton.click()
+        await this.CreateListName.fill('Jerry')
+        await this.PlannerButton.click()
         await this.BackToHome.click()
-         await this.TeamTab.click()
+        await this.Home_Team_SettingsButton.click()
     }
     async DeleteworkSpace(){
         await this.SettingsButton.click()
@@ -90,29 +97,3 @@ export class MainPage extends BasePage {
     }
     
 }
-// await page.getByTestId('create-board-tile').first().click();
-// await page.locator('div').filter({ hasText: 'Create board with AIStart' }).nth(4).click();
-// await page.getByTestId('create-board-tile').first().click();
-// await page.getByTestId('create-board-button').click();
-// await page.getByTestId('create-board-title-input').fill('wfwdw');
-// await page.getByTestId('create-board-submit-button').click();
-// await page.getByRole('link', { name: 'Back to home' }).click();
-// await page.getByTestId('home-team-tab-section-6a622d391c203b6381e53f68').getByRole('link', { name: 'S Sataru Gojo' }).click();
-// await page.getByTestId('home-team-settings-tab').click();
-
-
-
-
-
-// await page.getByTestId('header-member-menu-button').click();
-// await page.getByTestId('account-menu-workspace-creation-button').click();
-// await page.getByTestId('header-create-team-name-input').fill('taco');
-// await page.getByText('Choose…').click();
-// await page.getByTestId('header-create-team-type-input-select--option-6').click();
-// await page.getByTestId('header-create-team-submit-button').click();
-// await page.getByTestId('create-board-tile').click();
-// await page.getByTestId('create-board-button').click();
-// await page.getByTestId('create-board-title-input').click();
-// await page.getByTestId('create-board-title-input').fill('taco');
-// await page.getByTestId('create-board-title-input').press('Enter');
-// await page.getByTestId('open-settings-link').click();

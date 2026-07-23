@@ -28,7 +28,7 @@ test(" Trello BasePage Validation", async({page,context})=> {
     await loginpage.EnterPassword(DATA.accountpassword ?? '')
     await loginpage.LoginButton.click()
     const otp = authenticator.generate(DATA.secret ?? '')
-    // await page.waitForTimeout(2000);
+    
     // 2FA 
     await loginpage.Verification2FV(otp)
 
@@ -41,9 +41,8 @@ test(" Trello BasePage Validation", async({page,context})=> {
     
     // Create New Board
     await mainpage.CreateNewBoard();
-    await basepage.goBack()
-    await basepage.goForward()
-
+   
+    // Deleting Workspace
     await mainpage.DeleteworkSpace()
     
 });
