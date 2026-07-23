@@ -122,6 +122,10 @@ export class BasePage {
     async goBack() {
         await this.page.goBack();
     }
+    async DoublegoBack(){
+        await this.page.goBack()
+        await this.page.goBack();
+    }
 
     async goForward() {
         await this.page.goForward();

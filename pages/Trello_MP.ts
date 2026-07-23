@@ -1,6 +1,7 @@
-import {test,expect, Page, Locator} from '@playwright/test'
+import {test,expect, Page, Locator, BrowserContext} from '@playwright/test'
 import { BasePage } from './Trello_BP';
 import { workspace } from '../testdata/Credentials';
+import { waitForDebugger } from 'node:inspector';
 
 export class MainPage extends BasePage {
     readonly AccountIcon  : Locator;
@@ -11,14 +12,24 @@ export class MainPage extends BasePage {
     readonly WorkspaceDescriptionField  : Locator;
     readonly ContinueButton  : Locator;
     readonly SettingsButton : Locator;
+    
     readonly DeleteButton : Locator;
     readonly DeleteConfirmField : Locator;
     readonly DeleteConfirmButton :  Locator;
-    readonly DeleteNotification : Locator
+    readonly DeleteNotification : Locator;
+    
+    readonly NewBoard : Locator;
+    readonly CreateBoard : Locator;
+    readonly BoardtitleField : Locator;
+    readonly CreateBoardSubmitButton : Locator;
+    readonly CreateListName : Locator;
+    readonly PlannerButton : Locator;
+    readonly BackToHome : Locator;
+    readonly Home_Team_SettingsButton  : Locator;
 
 
-    constructor(page:Page) {
-        super(page)
+    constructor(page:Page, Context:BrowserContext) {
+        super(page,Context)
     this.AccountIcon =  page.getByTestId('header-member-menu-button');
     this.CreateWorkspaceIcon = page.getByTestId('account-menu-workspace-creation-button')
     this.WorkspaceNameField = page.getByTestId('header-create-team-name-input')
@@ -33,7 +44,18 @@ export class MainPage extends BasePage {
     this.WorkspaceDescriptionField = page.getByRole('textbox', { name: 'Workspace description Optional' })
     this.WorkspaceTypeFieldListBox =  page.getByTestId('header-create-team-type-input-select--listbox')
     this.ContinueButton = page.getByTestId('header-create-team-submit-button')
+    this.Home_Team_SettingsButton = page.getByTestId('home-team-settings-tab')
     this.SettingsButton = page.getByTestId('open-settings-link')
+
+    this.NewBoard = page.getByTestId('create-board-tile')
+    this.CreateBoard = page.getByTestId('create-board-button')
+    this.BoardtitleField = page.getByTestId('create-board-title-input')
+    this.CreateBoardSubmitButton = page.getByTestId('create-board-submit-button')
+    this.CreateListName =  page.getByTestId('list-name-textarea')
+    this.PlannerButton = page.getByTestId('panel-nav-planner-button')
+    this.BackToHome = page.getByRole('link', { name: 'Back to home' })
+   
+
     this.DeleteButton = page.getByTestId('delete-workspace-button')
     this.DeleteConfirmField = page.getByTestId('delete-workspace-confirm-field')
     this.DeleteConfirmButton = page.getByTestId('delete-workspace-confirm-button')
@@ -56,8 +78,19 @@ export class MainPage extends BasePage {
     async ClickContinueButton(){
         await this.ContinueButton.click()
     }
+    async CreateNewBoard(){
+        await this.NewBoard.first().click()
+        await this.CreateBoard.click()
+        await this.BoardtitleField.fill(workspace)
+        await this.CreateBoardSubmitButton.click()
+        await this.CreateListName.fill('Jerry')
+        await this.PlannerButton.click()
+        await this.BackToHome.click()
+        await this.Home_Team_SettingsButton.click()
+    }
     async DeleteworkSpace(){
         await this.SettingsButton.click()
+        await this.goBack()
         await this.DeleteButton.click()
         await this.DeleteConfirmField.fill(workspace)
         await this.DeleteConfirmButton.click()
